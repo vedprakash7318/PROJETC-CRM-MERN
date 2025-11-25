@@ -112,3 +112,21 @@ Frontend
 
 login page 
 Dashboard
+
+
+
+
+--------------------------------Start from supper admin-----------------------------
+
+Production deploye :- 
+                    api 
+                    end point
+                    http:localhost:3000/api/supperadmin/login
+                    .env
+                    nodemon
+                    dotenv
+                    cors
+                    mongoose
+                    express
+                    jsonwebtoken (jwt)
+                    atlas
