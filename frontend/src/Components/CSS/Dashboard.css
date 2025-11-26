@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.logout-btn{
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: red;
+    border: none;
+    outline: none;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.dashboard-outer{
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    background-color: antiquewhite;
+}
+
+.sidebar{
+    height: 100vh;
+    width: 280px;
+    color: aliceblue;
+    background-color: #1E293B;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.logo{
+    padding: 18px;
+    font-size: 30px;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid green;
+    width: 100%;
+
+}
+.sidebar-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 10px;
+    color: aliceblue;
+    width: 80%;
+    text-decoration: none;
+    font-size: 19px;
+    font-weight: 900;
+    margin-left: 10px;
+}
+.sidebar-item.active{
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+.main-content{
+    flex: 1;
+    height: 100vh;
+    background-color: white;
+    margin-left: 280px;
+}
+
+.header{
+    height: 70px;
+    width: 100%;
+    background-color: rgb(158, 149, 149);
+    z-index: 1;
+}
+.content{
+    height: 100vh;
+    overflow: auto;
+    padding: 20px;
+}

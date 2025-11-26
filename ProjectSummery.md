@@ -130,3 +130,17 @@ Production deploye :-
                     express
                     jsonwebtoken (jwt)
                     atlas
+
+
+
+----------------------JWT-----------------------
+
+SECRAETE KEY :- 
+
+PAYLOAD
+
+TOKEN :-  
+
+JWT.SIGN(PAYLOAD,SECRATE)
+
+JWT.VERIFY(TOKEN)
