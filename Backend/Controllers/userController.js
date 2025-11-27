@@ -30,4 +30,12 @@ const userLogin=async(req,res)=>{
     }
 }
 
-module.exports={createUser,userLogin}
+
+
+const getProfile=async(req,res)=>{
+    const user=await User.findById(req.user.userId)
+    if(!user) return res.status(404).json({success:false,message:"User not found"})
+    res.status(200).json({success:true,message:"User found",user})
+}
+
+module.exports={createUser,userLogin,getProfile}

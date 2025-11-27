@@ -13,8 +13,9 @@ const Login = () => {
             // console.log(res);
             if(res.status===200 || res.status===201){
                 const token=res.data.token
+                localStorage.setItem('role',res.data.user.role)
                 localStorage.setItem("token",token)
-                navigate('/dashboard')
+                navigate('/main-page')
             }
         } catch (error) {
             console.log(error);

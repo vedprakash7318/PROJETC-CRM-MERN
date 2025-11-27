@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Dashboard from './Components/Dashboard'
 import Login from './Pages/Login'
 import MainPage from './Pages/MainPage'
+import Profile from './Pages/Profile'
 
 const App = () => {
   const [auth, setAuth] = useState(false)
@@ -19,7 +20,10 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Login />} />
         {auth && (
-          <Route path='/dashboard' element={<MainPage />} />
+          <>
+          <Route path='/main-page' element={<MainPage />} />
+          <Route path='/profile' element={<Profile/>}/>
+          </>
         )}
       </Routes>
     </Router>

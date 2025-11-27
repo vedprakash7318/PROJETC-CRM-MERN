@@ -144,3 +144,45 @@ TOKEN :-
 JWT.SIGN(PAYLOAD,SECRATE)
 
 JWT.VERIFY(TOKEN)
+
+
+
+--------------------------------------------------------
+
+Dynamic Dashboard :-
+
+supper_admin
+
+Dashboard   /main-page
+Add Admin  /add-admin
+Manage Admin  /manage-admin
+
+
+Admin
+
+Dashboard  /admin-dashboard
+Leads :-  /leads
+Priority :- /priority
+.
+.
+.
+.
+
+
+Employee 
+
+Dashboard   /  employee-dashboard
+leads :-  employee-leads
+closed-lead   /closed-lead
+.
+.
+.
+.
+
+
+
+
+Pages
+Folder :- Supper Admin   Supperdashboard    City , State,Country, admin, manageAdmin
+Folder :- Admin         AdminDashboard      Leads , Priority , Status, Source, tag, Services
+Folder :- Employee       EmployeeDashboard   leads, closedLeads, NegativeLeads, Reminder
