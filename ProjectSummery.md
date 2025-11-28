@@ -186,3 +186,61 @@ Pages
 Folder :- Supper Admin   Supperdashboard    City , State,Country, admin, manageAdmin
 Folder :- Admin         AdminDashboard      Leads , Priority , Status, Source, tag, Services
 Folder :- Employee       EmployeeDashboard   leads, closedLeads, NegativeLeads, Reminder
+
+
+
+--------------Admin level Global Settings karna-------------
+
+
+
+
+Country    create update delete read
+
+State      create update delete read
+
+City       create update delete read
+
+
+Country :- 
+name 
+addedby:- supperAdmin 
+
+state:- 
+name 
+addedby   supperAdmin 
+countryId  
+
+city :- 
+name  
+stateId
+addedby  supperAdmin 
+
+
+
+Leads:-
+
+Name   string
+mobileNumber   string
+email   string
+gender   string
+
+country :-   objectId   (country model)
+state   :-    objectId   (state model)
+city    :-    objectId   (city model)
+
+addedBy :- object (user)
+
+services  :- objectid (services)
+sources   :-  objectid (sources)
+priority  :- objectid (priority)
+tag       :- [objectid (tag)]
+status    :-  objectid (status) 
+assignedTo:- objectid (user (employee))
+assignedBy :- objectid (user (admin))
+
+ 
+
+
+
+
+

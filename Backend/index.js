@@ -16,11 +16,17 @@ app.get('/',(req,res)=>{
 // import custom files
 const connectDB = require('./Config/db')
 const user = require('./Routes/userRoute')
+const country = require('./Routes/countryRoute')
+const state = require('./Routes/stateRoute')
+const city = require('./Routes/cityRoute')
 
 connectDB()
 
 // Routes
 app.use('/api/user',user);
+app.use('/api/country',country);
+app.use('/api/state',state);
+app.use('/api/city',city);
 
 
 
