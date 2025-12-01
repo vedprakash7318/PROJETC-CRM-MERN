@@ -20,7 +20,8 @@ const countryCreate = async(req,res)=>{
 
 const getAllCountry = async(req,res)=>{
   try {
-    const country=await Country.find();
+    const country=await Country.find()
+    .populate('addedby','name')
   return res.status(200).json({succes:true,message:"Country found",country})
   } catch (error) {
     return res.status(500).json({succes:false,message:"Country not found"})

@@ -4,6 +4,8 @@ import Dashboard from './Components/Dashboard'
 import Login from './Pages/Login'
 import MainPage from './Pages/MainPage'
 import Profile from './Pages/Profile'
+import SupperDashbaord from './Pages/SupperAdmin/SupperDashbaord'
+import Country from './Pages/SupperAdmin/Country'
 
 const App = () => {
   const [auth, setAuth] = useState(false)
@@ -23,6 +25,12 @@ const App = () => {
           <>
           <Route path='/main-page' element={<MainPage />} />
           <Route path='/profile' element={<Profile/>}/>
+          <Route path='/supper-dashboard' element={<SupperDashbaord/>}/>
+
+
+          {/* Supper admin routes */}
+
+          <Route path='/country' element={<Country/>}/>
           </>
         )}
       </Routes>

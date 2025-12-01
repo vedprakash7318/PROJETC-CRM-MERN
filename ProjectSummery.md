@@ -223,7 +223,7 @@ Name   string
 mobileNumber   string
 email   string
 gender   string
-
+  
 country :-   objectId   (country model)
 state   :-    objectId   (state model)
 city    :-    objectId   (city model)
@@ -235,8 +235,19 @@ sources   :-  objectid (sources)
 priority  :- objectid (priority)
 tag       :- [objectid (tag)]
 status    :-  objectid (status) 
+
+
 assignedTo:- objectid (user (employee))
 assignedBy :- objectid (user (admin))
+
+
+
+
+services:-  name , addedby
+sources :-   name ,addedby
+priority :- 
+tag  :- 
+status  :- 
 
  
 

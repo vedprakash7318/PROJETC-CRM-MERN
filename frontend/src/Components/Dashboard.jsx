@@ -23,8 +23,8 @@ const Dashboard = ({children}) => {
             path:"/supper-dashboard",
         },
         {
-            title:"Admins",
-            path:"/admin"
+            title:"Country",
+            path:"/country"
         },
         {
             title:"Manage Admin",

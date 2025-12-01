@@ -14,6 +14,7 @@ const Login = () => {
             if(res.status===200 || res.status===201){
                 const token=res.data.token
                 localStorage.setItem('role',res.data.user.role)
+                localStorage.setItem('SupperAdminId',res.data.user._id)
                 localStorage.setItem("token",token)
                 navigate('/main-page')
             }
