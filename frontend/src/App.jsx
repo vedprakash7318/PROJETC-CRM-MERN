@@ -9,6 +9,8 @@ import Country from './Pages/SupperAdmin/Country';
 
 import ProtectedRoute from './Pages/ProtectedRoute';
 import State from './Pages/SupperAdmin/State';
+import City from './Pages/SupperAdmin/City';
+import Leads from './Pages/Admin/Leads';
 
 
 const App = () => {
@@ -37,7 +39,7 @@ const App = () => {
           }
         />
 
-{/* Supper admin Routes */}
+        {/* Supper admin Routes */}
         <Route
           path='/supper-dashboard'
           element={
@@ -66,7 +68,33 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        
+
+        <Route
+          path='/city'
+          element={
+            <ProtectedRoute>
+              <City />
+            </ProtectedRoute>
+          }
+        />
+
+
+
+
+
+        {/* Admin routes */}
+
+
+
+        <Route
+          path='/leads'
+          element={
+            <ProtectedRoute>
+              <Leads />
+            </ProtectedRoute>
+          }
+        />
+
 
       </Routes>
     </Router>

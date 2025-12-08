@@ -20,7 +20,9 @@ const cityCreate = async(req,res)=>{
 
 const getAllCity = async(req,res)=>{
   try {
-    const city=await City.find();
+    const city=await City.find()
+    .populate('stateId')
+    .populate('addedby')
   return res.status(200).json({succes:true,message:"city found",city})
   } catch (error) {
     return res.status(500).json({succes:false,message:"city not found"})

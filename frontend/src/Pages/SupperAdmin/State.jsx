@@ -9,6 +9,7 @@ import { Dropdown } from 'primereact/dropdown';
 import axios from 'axios';
 const State = () => {
     const APi_Url = import.meta.env.VITE_API_URL
+    const addedby = localStorage.getItem('SupperAdminId')
     const [visible, setVisible] = useState(false)
     const [states, setStates] = useState([]);
 
@@ -20,7 +21,6 @@ const State = () => {
         try {
             const res = await axios.get(`${APi_Url}/api/state/get-all-state`)
             setStates(res.data.state);
-            console.log(res.data.state);
         } catch (error) {
             console.log(error)
         }
@@ -29,11 +29,24 @@ const State = () => {
         try {
             const res = await axios.get(`${APi_Url}/api/country/get-all-country`)
             setCountries(res.data.country);
-            console.log(res.data.country);
         } catch (error) {
             console.log(error)
         }
     }
+    const handleSubmit=async()=>{
+        try {
+            const res = await axios.post(`${APi_Url}/api/state/add-state`,{stateName,countryId,addedby})
+            console.log(res);
+            fetchStates()
+            setVisible(false)
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
+
+
+
     useEffect(() => {
         fetchStates()
         fetchCountry()

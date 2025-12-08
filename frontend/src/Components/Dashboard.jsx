@@ -21,11 +21,12 @@ const Dashboard = ({ children }) => {
     { label: 'Dashboard', path: '/supper-dashboard' },
     { label: 'Country', path: '/country' },
     { label: 'State', path: '/state' },
+    { label: 'City', path: '/city' },
     { label: 'Manage Admin', path: '/manage-admin' },
   ];
   
   const Admin = [
-    { label: 'State', path: '/state' },
+    { label: 'Leads', path: '/leads' },
     { label: 'Admin Main', path: '/main-page' },
     { label: 'Admin Ved', path: '/ved' },
     { label: 'Admin Product', path: '/product' },

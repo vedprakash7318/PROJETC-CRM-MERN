@@ -1,5 +1,6 @@
 const Lead = require('../Models/leadModel');
 const User =require ('../Models/userModel');
+
 const AddLead= async(req,res)=>{
     try {
         
@@ -25,5 +26,17 @@ const AddLead= async(req,res)=>{
     }
 }
 
+const getLeads = async(req,res)=>{
+    try {
+    const {addedBy} = req.params
+    // console.log(addedBy);
+    const leads = await Lead.find({addedBy})
+    if(!leads) return res.status(404).json({success:false,message:"Leads Not Available"})
+    
+    res.status(200).json({success:false,message:"Leads found successfully",leads})
+    } catch (error) {
+        res.status(500).json({success:false,message:"Internal Server Error",error})
+    }
+}
 
-module.exports ={AddLead}
+module.exports ={AddLead,getLeads}
