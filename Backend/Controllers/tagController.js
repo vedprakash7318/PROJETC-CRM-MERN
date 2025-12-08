@@ -18,7 +18,8 @@ const createTag = async(req,res)=>{
 
 const getAllTag = async (req, res) => {
     try {
-        const tag = await Tag.find().populate("addedBy", "name");
+        const {addedBy} = req.params
+        const tag = await Tag.find({addedBy}).populate("addedBy", "name");
 
         return res.status(200).json({
             success: true,

@@ -3,16 +3,20 @@ import axios from 'axios';
 const leadSlice = createSlice ({
     name:"leads",
     initialState:{
-        leads:[]
+        lead:[],
+        tag:[],
     },
     reducers:{
-        setLeads:(state,action)=>{
-            state.leads=action.payload;
+        setLead:(state,action)=>{
+            state.lead=action.payload;
+        },
+        setTag:(state,action)=>{
+            state.tag=action.payload;
         }
     }
 })
 export const {
-    setLeads
+    setLead
 } = leadSlice.actions
 
 const API_URL= import.meta.env.VITE_API_URL;
@@ -21,8 +25,9 @@ const addedby = localStorage.getItem("SupperAdminId")
 
 export const fetchLeads = ()=> async (dispatch)=>{
     const res = await axios.get(`${API_URL}/api/lead/get-leads/${addedby}`)
-    dispatch(setLeads(res.data.leads))
-    
+    dispatch(setLead(res.data.leads))
+    console.log(res);
+        
 }
 
 

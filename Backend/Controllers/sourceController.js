@@ -29,7 +29,8 @@ const createSource = async (req, res) => {
 // Get All Sources
 const getSources = async (req, res) => {
   try {
-    const sources = await Source.find().populate("addedBy", "name");
+    const {addedBy} = req.params
+    const sources = await Source.find({addedBy}).populate("addedBy", "name");
 
     return res.status(200).json({
       success: true,

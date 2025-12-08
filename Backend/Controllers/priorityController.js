@@ -33,7 +33,8 @@ const createPriority = async (req, res) => {
 // Get All Priority
 const getPriorities = async (req, res) => {
   try {
-    const priorities = await Priority.find().populate("addedBy", "name");
+    const {addedBy} = req.params;
+    const priorities = await Priority.find({addedBy}).populate("addedBy", "name");
 
     return res.status(200).json({
       success: true,
@@ -41,7 +42,7 @@ const getPriorities = async (req, res) => {
       priorities
     });
 
-  } catch (error) {
+  } catch (error) { 
     return res.status(500).json({
       success: false,
       message: "Internal Server Error",

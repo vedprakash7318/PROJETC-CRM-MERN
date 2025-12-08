@@ -8,7 +8,6 @@ const AddLead= async(req,res)=>{
     if(!phoneNumber || !sources || !priority || !tag || !addedBy){
         return res.status(400).json({success:false,message:"All fields are required"});
     }
-
     const existAddedBy = await User.findById(addedBy)
     if(!existAddedBy){
         return res.status(400).json({success:false,message:"AddedBy Id is Invalid"});
@@ -29,7 +28,7 @@ const AddLead= async(req,res)=>{
 const getLeads = async(req,res)=>{
     try {
     const {addedBy} = req.params
-    // console.log(addedBy);
+    console.log("done");
     const leads = await Lead.find({addedBy})
     if(!leads) return res.status(404).json({success:false,message:"Leads Not Available"})
     
