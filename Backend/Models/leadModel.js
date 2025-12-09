@@ -15,38 +15,42 @@ const LeadSchema = new mongoose.Schema({
     country: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "country",
+        default:null,
     },
     state: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "state",
+        default:null,
     },
     city: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "city",
+        default:null,
     },
     services: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "services",
+        default:null,
     },
     sources: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "source",
+        ref: "sources",
         required:true,
     },
     priority: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "priority",
+        ref: "prioritys",
         required:true,
     },
     tag: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "tag",
+        ref: "tags",
         required:true,
     }],
     status: {
         type: String,
         enum: ['closed', 'negative', 'active',],
-        default: "active"
+        default: "active",
     },
     isBlocked: {
         type: Boolean,
@@ -55,14 +59,16 @@ const LeadSchema = new mongoose.Schema({
     assignedTo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",
+        default:null,  
     },
     assignedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",
+        default:null,
     },
     addedBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
+        ref: "users",
         required:true
     }
 }, { timestamps: true })

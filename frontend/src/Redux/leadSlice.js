@@ -26,7 +26,6 @@ const addedby = localStorage.getItem("SupperAdminId")
 export const fetchLeads = ()=> async (dispatch)=>{
     const res = await axios.get(`${API_URL}/api/lead/get-leads/${addedby}`)
     dispatch(setLead(res.data.leads))
-    console.log(res);
         
 }
 

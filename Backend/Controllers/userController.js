@@ -38,4 +38,18 @@ const getProfile=async(req,res)=>{
     res.status(200).json({success:true,message:"User found",user})
 }
 
-module.exports={createUser,userLogin,getProfile}
+
+
+
+const getEmployee = async(req,res)=>{
+try {
+        const {addedby} = req.params
+    if(!addedby) return res.status(400).json({success:false,message:"addedby is required"})
+    const employee = await User.find({addedBy:addedby})
+    if(!employee) return res.status(400).json({success:false,message:"Employee not found"})
+    return res.status(200).json({success:true,message:"Employee Found",employee})
+} catch (error) {
+    return res.status(500).json({success:false,message:"Internal server error"})
+}
+}
+module.exports={createUser,userLogin,getProfile,getEmployee}

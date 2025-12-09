@@ -19,16 +19,20 @@ const Leads = () => {
     const [priority, setPriority] = useState('')
     const [source, setSource] = useState('')
     const [tag, setTag] = useState([])
-
+     const [assignVisible, setAssignVisible] = useState(false);
+    const [selectedEmp,setSelectedEmp] = useState("")
+    const [selectedLead,setSelectedLead] =useState('')
     //  set all dropdowns
 
     const [priorities, setPriorities] = useState([])
     const [sources, setSources] = useState([])
     const [tags, setTags] = useState([])
-
+    const [empList,setEmpList]=useState([])
      //    redux fetch
     const dispatch = useDispatch();
     const lead = useSelector((state) => state.leads.lead);
+    // console.log(lead);
+    
 
     useEffect(() => {
         if (lead?.length === 0) {
@@ -41,13 +45,18 @@ const Leads = () => {
 
 
     const fetchDropdowns = async () => {
-        const [preRes, srcRes, tagRes] = await Promise.all([
+        const [preRes, srcRes, tagRes,empRes] = await Promise.all([
             axios.get(`${API_URL}/api/priority/get-all-priority/${addedby}`),
             axios.get(`${API_URL}/api/source/get-all-source/${addedby}`),
-            axios.get(`${API_URL}/api/tag/get-all-tag/${addedby}`)
+            axios.get(`${API_URL}/api/tag/get-all-tag/${addedby}`),
+            axios.get(`${API_URL}/api/user/get-employee/${addedby}`)
 
         ])
-
+        const empData = (empRes.data.employee || []).map((e)=>({
+            _id:e._id,
+            empName:e.name
+        }))
+        
         const priorityData = (preRes.data.priorities || []).map((p) => ({
             _id: p._id,
             priorityName: p.priorityName
@@ -63,6 +72,7 @@ const Leads = () => {
         setPriorities(priorityData)
         setSources(sourcesData)
         setTags(tagData)
+        setEmpList(empData)
 
 
     }
@@ -85,9 +95,34 @@ const Leads = () => {
         }        
     }
 
+    const handleA =(rowData)=>{
+        setAssignVisible(true)
+        setSelectedLead(rowData._id)
+    }
+const actionBtn=(rowData)=>{
+    return (
+        <>
+            <Button label="Assign Lead" icon="pi pi-external-link" onClick={() =>handleA(rowData)} />
+        </>
+    )
+}
 
-
-   
+   const handleAssign =async()=>{
+    try {
+        console.log(selectedEmp)
+    console.log("leads:",selectedLead)
+    const res =await axios.put(`${API_URL}/api/lead/assign-lead`,{selectedEmp,selectedLead})
+    console.log(res);
+    
+    
+    dispatch(fetchLeads())
+    console.log(res);
+    } catch (error) {
+        console.log(error);
+        
+    }
+    
+   }
     return (
         <Dashboard>
 
@@ -107,15 +142,20 @@ const Leads = () => {
 
                     <Column field="phoneNumber" header="Phone Number" sortable />
 
-                    <Column field="sources" header="Sources" sortable />
+                    <Column field="sources.sourceName" header="Sources" sortable />
 
-                    <Column field="priority" header="Priority" sortable />
+                    <Column field="priority.priorityName" header="Priority" sortable />
 
-                    <Column field="assignedTo" header="Assigned To" sortable />
+                    <Column body={(row)=>row.assignedTo?.name || "NA"} header="Assigned To" sortable />
 
                     <Column
                         header="Added By"
-                        body={(row) => row.addedBy || "—"}
+                        body={(row) => row.addedBy?.name || "—"}
+                    />
+
+                    <Column 
+                        header="Assign Lead"
+                        body={actionBtn}
                     />
                 </DataTable>
             </div>
@@ -162,6 +202,26 @@ const Leads = () => {
                  <Button label="Add Leads" icon="pi pi-plus" onClick={handleLeads} className="p-button-success" />
 
             </Dialog>
+
+
+
+
+
+            <Dialog header="Assign Lead" visible={assignVisible} style={{ width: '50vw' }} onHide={() => { if (!assignVisible) return; setAssignVisible(false); }}>
+                 <label>Select Employee</label> &emsp;
+                <Dropdown
+                    value={selectedEmp}
+                    onChange={(e) => setSelectedEmp(e.value)}
+                    options={empList}
+                    optionLabel="empName"
+                    optionValue='_id'
+                    placeholder="Select a priority"
+                    className="w-full md:w-14rem"
+                /> <br /> <br /> <br />
+                <Button label="Assign" icon="pi pi-plus" onClick={handleAssign} className="p-button-success" />
+            </Dialog>
+
+
         </Dashboard>
     )
 }
